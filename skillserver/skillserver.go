@@ -251,6 +251,7 @@ func IsValidAlexaRequest(w http.ResponseWriter, r *http.Request) bool {
 func readCert(certURL string) ([]byte, error) {
 	cert, err := http.Get(certURL)
 	if err != nil {
+		log.Println(err, cert)
 		return nil, errors.New("Could not download Amazon cert file.")
 	}
 	defer cert.Body.Close()
